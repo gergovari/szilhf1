@@ -1,5 +1,55 @@
 \section{3-as rúd hajlítása}
 
+\begin{equation*}
+	c = \siunit{30}{\mm}
+\end{equation*}
+
 \subsection{Zérus és $y_3$ tengely szöge}
 
+\begin{align*}
+	&I_{x_3} = \frac{(3c)(2c)^3}{36} = &\siunit{5.4e5}{\mm^4} \\
+	&I_{y_3} = \frac{(2c)(3c)^3}{36} = &\siunit{1.215e6}{mm^4}\\
+	&I_{xy_3} = \frac{(2c)^2(3c)^2}{72} = &\siunit{-4.05e5}{mm^4}
+\end{align*}
+
+\begin{align*}
+	I_{1;2} &= \frac{I_{x_3} + I_{y_3}}{2} + \frac{1}{2}\sqrt{(I_{x_3} - I_{y_3})^2 +4I_{xy_3}^2} \\
+	I_1 &= \siunit{1404691,853}{\mm^4} \\
+	I_2 &= \siunit{350308.1469}{\mm^4}
+\end{align*}
+
+\begin{equation*}
+	\alpha = \arctan\left(\frac{I_{x_3} - I_1}{I_{xy_3}}\right) = \ang{64.9}
+\end{equation*}
+
+\begin{align*}
+	M_h &= - F_2 \frac{R}{2} = &\knm{-0.45} \\
+	M_{h_\xi} &= \left|M_h\right|\cdot \cos\alpha = &\nmm{190889.7402} \\
+	M_{h_\eta} &= \left|M_h\right|\cdot \sin\alpha = &\nmm{-407505.9596} \\
+\end{align*}
+
+\begin{align*}
+	\beta &= \arctan\left(\frac{M_{h_\eta}\cdot I_1}{M_{h_\xi}\cdot I_2}\right) = &\ang{-83.3367} \\
+	\beta_0 &= \alpha + \beta = &\ang{-18.437}
+\end{align*}
+
 \subsection{Maximális normálfeszültség}
+
+\begin{align*}
+	\xi(x;y) &= x\cdot \cos\alpha + y\cdot \sin\alpha \\
+	\eta(x;y) &= y\cdot \cos\alpha - x\cdot \sin\alpha \\
+\end{align*}
+
+\begin{equation*}
+	\sigma(x;y) = \frac{M_{h_\xi}}{I_1}\eta(x;y) - \frac{M_{h_\eta}}{I_2}\xi(x;y)
+\end{equation*}
+
+\begin{align*}
+	\sigma_A &= \sigma\left(-c;\frac{4}{3}c\right) = &\mpa{33,331} \\
+	\sigma_B &= \sigma\left(-c;-\frac{2}{3}c\right) = &\mpa{-33,334} \\
+	\sigma_C &= \sigma\left(2c;-\frac{2}{3}c\right) = &\mpa{2.52080429e-3}
+\end{align*}
+
+\begin{equation*}
+	\sigma_\text{max} = \sigma_B = \mpa{-33.334}
+\end{equation*}

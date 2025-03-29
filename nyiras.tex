@@ -2,4 +2,55 @@
 
 \subsection{Függvény}
 
+\begin{equation*}
+	V_\text{max} = V_x (L+R) = \kn{-1.5765}
+\end{equation*}
+
+\begin{equation*}
+	\tau_z(y) = \frac{V_\text{max} \cdot S(y)}{I_x \cdot a(y)}
+\end{equation*}
+
+\subsubsection{Kettébontás}
+
+\begin{multicols}{2}
+	\circled{1}
+	\begin{equation*}
+		S_1(y) = A_1(y) \cdot k_1(y)
+	\end{equation*}
+	\begin{align*}
+		A_1(y) &= \left[ 
+			\frac{b}{6} 
+			- \left(y - \left[\frac{b}{2} - \frac{b}{6} \right] \right)
+		\right] \cdot 2b
+		\\&= b^2 -2by
+	\end{align*}
+	\begin{equation*}
+		k_1(y) = \frac{\frac{b}{2} + y}{2} = \frac{1}{4}b+\frac{1}{2}y
+	\end{equation*}
+
+	\columnbreak
+	\circled{2}
+	\begin{equation*}
+		S_2(y) = S_1\left(\frac{2}{3}b\right) + A_2(y) \cdot k_2(y)
+	\end{equation*}
+	\begin{align*}
+		A_2(y) &= 2\left(\frac{b}{3} \left[\left(\frac{b}{2} - \frac{b}{6}\right) - y \right] \right)
+		     \\&=\frac{2}{9}b^2 - \frac{2}{3}by
+	\end{align*}
+	\begin{equation*}
+		k_2(y) = \frac{y + \left(\frac{b}{2} - \frac{b}{6} \right)}{2}
+		= \frac{1}{6}b + \frac{1}{2}y
+	\end{equation*}
+
+\end{multicols}
+
+\begin{align*}
+	&\tau_{z_1}(y) = \num{-1.776841346e-5}y^2 + \num{2.557211538e-3} \\
+	&\tau_{z_2}(y) = \num{-1.776404748e-5}y^2 + \num{5.4e-3}
+\end{align*}
+
+\begin{equation*}
+	\tau^{(1)}_\text{max} = \tau_{z_2}(0) = \mpa{5.4}
+\end{equation*}
+
 \subsection{Ábrázolás}

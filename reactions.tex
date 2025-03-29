@@ -1,28 +1,32 @@
 \section{Reakció komponensek}
 
 \subsection{Léptékhelyes ábra}
+
+\begin{tikzpicture}
+\end{tikzpicture}
+
 \subsection{SZTÁ}
 
 \newpage
 
 \subsection{Egyensúlyi képletek}
 
-\begin{align}
+\begin{align*}
 	&\equal{F_x}{A_x - F_1 - F_2} \\
 	&\equal{F_y}{A_y + B_y - p(L+R)} \\
 	&\equal{M^A}
-	{B_y(2L+R) + F_1 \frac{R}{2} - F_2 (R+\frac{R}{2}) - p\frac{(L+R)^2}{2}}
-\end{align}
+	{B_y(2L+R) + F_1 \frac{R}{2} - F_2 \left(R+\frac{R}{2}\right) - p\frac{(L+R)^2}{2}}
+\end{align*}
 
-\begin{align}
-	(1) &\Rightarrow A_x = F_1 + F_2 = \kn{6} \\
-	(3) &\Rightarrow B_y 
-		= F_2 (R + \frac{R}{2}) - F_1\frac{R}{2} + p\frac{(L+R)^2}{2} 
+\begin{align*}
+	&A_x = F_1 + F_2 = \kn{6} \\
+	&B_y 
+		= F_2 \left(R + \frac{R}{2}\right) - F_1\frac{R}{2} + p\frac{(L+R)^2}{2} 
 		= \kn{1.85} \\
-	(2) &\Rightarrow A_y = p(L+R) - B_y = \kn{1.074} \\
-\end{align}
+	&A_y = p(L+R) - B_y = \kn{1.074} \\
+\end{align*}
 
-\begin{align}
-	(1) \land (2) \Rightarrow &|\textbf{A}| = \kn{6.1} \\
-	(3) \Rightarrow &|\textbf{B}| = \kn{1.85} 
-\end{align}
+\begin{align*}
+	&|\textbf{A}| = \kn{6.1} \\
+	&|\textbf{B}| = \kn{1.85} 
+\end{align*}

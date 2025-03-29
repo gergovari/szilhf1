@@ -2,6 +2,9 @@
 
 \usepackage[provide=*, magyar]{babel}
 
+\usepackage{graphicx}
+\usepackage{tikz}
+
 \usepackage{pdfpages}
 
 \usepackage{amsmath}
@@ -9,17 +12,34 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage[table]{xcolor}
+\usepackage{multicol}
 
 \newcommand{\siunit}[2]{
 	\SI{#1}{[#2]}
 }
 
+\newcommand{\n}[1]{
+	\siunit{#1}{\newton}
+}
+\newcommand{\nmm}[1]{
+	\siunit{#1}{\newton\mm}
+}
 \newcommand{\kn}[1]{
 	\siunit{#1}{\kilo\newton}
+}
+\newcommand{\knm}[1]{
+	\siunit{#1}{\kilo\newton\meter}
+}
+\newcommand{\mpa}[1]{
+	\siunit{#1}{\mega\pascal}
 }
 
 \newcommand{\equal}[2]{
 	\sum{#1} := 0 = #2
+}
+
+\newcommand{\circled}[1]{
+	\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}
 }
 
 \input{title}
@@ -27,34 +47,38 @@
 \begin{document}
 	\pagenumbering{gobble}
 	
-	\include{exercise}
+	\input{exercise}
 
 	\maketitle
+	\rule{0pt}{50pt}
+	\begin{figure}[hbt!]
+		\centering
+		\includegraphics[scale=1.75]{./images/cauchy_stress_components.png}
+		\caption{Cauchy feszültségi tenzor}
+	\end{figure}
 
 	\newpage
 	\pagenumbering{arabic}
 	
-	\include{reactions}
+	\input{reactions}
 	\newpage
 
-	\include{csuklokesrudak}
+	\input{csuklokesrudak}
 	\newpage
 
-	\include{egyes}
+	\input{egyes}
 	\newpage
 	
-	\include{meretezes}
-	\include{ureplace}
+	\input{meretezes}
+	\input{ureplace}
+	\input{checku}
 	\newpage
 
-	\include{checku}
+	\input{nyiras}
 	\newpage
 
-	\include{nyiras}
-	\newpage
-
-	\include{kettes}
+	\input{kettes}
 	\newpage
 	
-	\include{harmas}
+	\input{harmas}
 \end{document}
