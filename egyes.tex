@@ -6,29 +6,36 @@
 \subsection{Függvények}
 {\footnotesize
 	\begin{center}
-		\begin{tabular}{|c|c|c|c|}
-			\hline
-
+		\setlength{\aboverulesep}{0pt}
+		\setlength{\belowrulesep}{0pt}
+		\setlength{\extrarowheight}{.75ex}
+		\begin{tabular}{rccc}
+			\toprule
+			\rowcolor{lightgray}
+			$x$
 			&$0 < x < L$
 			&$L < x < L+R$
 			&$L+R < x < 2L+R$ \\
 
-			\hline
+			\toprule
 
+			\rowcolor{pink}
 			$N$
 			&$-A_x$
 			&$-A_x - N_{2_x} + F_1$
 			&$-A_x - N_{2_x} + F_1$ \\
 
-			\hline
+			\midrule
 
+			\rowcolor{lime}
 			$V$
 			&$-A_y+px$
 			&$px -A_y + N_{2_y}$
 			&$p(L+R) - A_y + N_{2_y}$ \\
 
-			\hline
+			\midrule
 
+			\rowcolor{cyan}
 			$M_h$
 			&$
 			-A_y x + p \frac{x^2}{2}
@@ -46,7 +53,8 @@
 				+ N_{2_y}(x - L) + F_1 \frac{R}{2} \\
 				\\
 			\end{array}$ \\
-			\hline
+
+			\bottomrule
 		\end{tabular}
 	\end{center}
 }
