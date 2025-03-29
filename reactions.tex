@@ -2,8 +2,54 @@
 
 \subsection{Léptékhelyes ábra}
 
-\begin{tikzpicture}
-\end{tikzpicture}
+\pgfmathsetmacro\s{0.01}
+
+\pgfmathsetmacro\L{350}
+\pgfmathsetmacro\R{300}
+
+
+\pgfmathsetmacro\d{50}
+
+\pgfmathsetmacro\dones{5}
+\pgfmathsetmacro\ds{\d * .05}
+\pgfmathsetmacro\dthrees{4}
+
+\newcommand{\coords}{
+	\pgfmathsetmacro\Ls{\L * \s}
+	\pgfmathsetmacro\Rs{\R * \s}
+
+	\coordinate (A) at (0, 0);
+	\coordinate (B) at (2 * \Ls + \Rs, 0);
+	\coordinate (C) at (\Ls + \Rs, -\Rs);
+	\coordinate (D) at (\Ls + \Rs - 0.5 * \Ls, -1.5 * \Rs);
+	\coordinate (G) at (\Ls, 0);
+}
+\newcommand{\points}{
+	\fill[red] (A) circle (2pt) node[above left] {A};
+	\fill[red] (B) circle (2pt) node[below right] {B};
+	\fill[red] (C) circle (2pt) node[below right] {C};
+	\fill[red] (D) circle (2pt) node[below left] {D};
+	\fill[red] (G) circle (2pt) node[above] {G};
+}
+\newcommand{\structure}{
+	\draw[line width=\dones] (A) -- (B);
+	\draw[line width=\dthrees] (B) -- (D);
+
+	\draw[line width=\ds] (G) arc (0:90:-\Rs);
+}
+\newcommand{\sizes}{
+	
+}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coords
+		
+		\structure
+		\sizes
+		\points
+	\end{tikzpicture}
+\end{center}
 
 \subsection{SZTÁ}
 
