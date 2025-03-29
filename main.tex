@@ -4,34 +4,50 @@
 
 \usepackage{pdfpages}
 
-\title{Szilárdságtan HF1}
-\date{\today}
-\author{Vári Gergő}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+\newcommand{\siunit}[2]{
+	\SI{#1}{[#2]}
+}
+
+\newcommand{\kn}[1]{
+	\siunit{#1}{\kilo\newton}
+}
+
+\input{title}
 
 \begin{document}
 	\pagenumbering{gobble}
-
-	\includepdf[pages={1}, pagecommand={
-		\begin{picture}(0,0) 
-			\put(270, 93){Vári Gergő}
-			{\fontfamily{cmr}\selectfont\put(300, 25){\Large{Vári Gergő}}}
-			\put(-46, -417){\Large{6.1}}
-			\put(29, -417){\Large{1.85}}
-			\put(108, -417){\Large{0.35}}
-			\put(189, -417){\Large{3.5}}
-			\put(269, -417){\Large{24}}
-			\put(344, -417){\Large{166}}
-			\put(332, -475){\Large{-18.435}}
-			\put(256, -475){\Large{33.333}}
-			\put(176, -475){\Large{-21.331}}
-			\put(111, -475){\Large{5.4}}
-			\put(25, -475){\Large{1.576}}
-			\put(-57, -475){\Large{-94.66}}
-		\end{picture}
-	}]{szilhf1.pdf}
+	
+	\include{exercise}
 
 	\maketitle
+
+	\newpage
+	\pagenumbering{arabic}
+	
+	\include{reactions}
 	\newpage
 
-	\pagenumbering{arabic}
+	\include{csuklokesrudak}
+	\newpage
+
+	\include{egyes}
+	\newpage
+	
+	\include{meretezes}
+	\include{ureplace}
+	\newpage
+
+	\include{checku}
+	\newpage
+
+	\include{nyiras}
+	\newpage
+
+	\include{kettes}
+	\newpage
+	
+	\include{harmas}
 \end{document}
