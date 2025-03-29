@@ -6,6 +6,7 @@
 
 \usepackage{amsmath}
 \usepackage{siunitx}
+\usepackage{tabularx}
 
 \newcommand{\siunit}[2]{
 	\SI{#1}{[#2]}
@@ -13,6 +14,10 @@
 
 \newcommand{\kn}[1]{
 	\siunit{#1}{\kilo\newton}
+}
+
+\newcommand{\equal}[2]{
+	\sum{#1} := 0 = #2
 }
 
 \input{title}

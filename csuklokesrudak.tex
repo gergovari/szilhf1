@@ -1,27 +1,71 @@
 \section{Csuklók és rudak}
 
 \subsection{}
+
 \subsubsection{SZTÁ}
+
 \subsubsection{Egyensúlyi képletek}
+\begin{align}
+    &\equal{F_x}{A_x - F_1 + N_{2_x} + N_{1_x}} \\
+    &\equal{F_y}{A_y - p(L+R) - N_{2_y} - N_{1_Y}} \\
+    &\equal{M^B}{N_{2_y}(L+R) + F_1 \frac{R}{2} + p(L+R)(L+\frac{L+R}{2}) \nonumber \\
+    &\quad - A_y (2L+R)}
+\end{align}
+
+\begin{equation}
+	(5) \Rightarrow N_{2_y} = \frac{A_y{2L+R} - F_1 \frac{R}{2} - p(L+R)(L+\frac{L+R}{2})}{L+R} = \kn{-2.0775}
+\end{equation}
+
+\newpage
+
+\subsection{}
+
+\subsubsection{SZTÁ}
+
+\subsubsection{Egyensúlyi képletek}
+\begin{align}
+    &\equal{F_x}{- N_{2_x} + N_{2_x}} \\
+    &\equal{F_y}{- N_{2_y} + N_{2_y}} \\
+    &\equal{M}{0}
+\end{align}
 
 \newpage
 
 \subsection{}
 \subsubsection{SZTÁ}
 \subsubsection{Egyensúlyi képletek}
-
-\newpage
-
-\subsection{}
-\subsubsection{SZTÁ}
-\subsubsection{Egyensúlyi képletek}
+\begin{align}
+    &\equal{F_x}{- F_2 + N_{3_x} - N_{2_x}} \\
+    &\equal{F_y}{N_{2_y} + N_{3_y}} \\
+    &\equal{M^C}{-F_2 \frac{R}{2} - N_{3_x} (R) + N_{3_y} (L)}
+\end{align}
 
 \newpage
 
 \subsection{B pont}
+
 \subsubsection{SZTÁ}
+
 \subsubsection{Egyensúlyi képletek}
+\begin{align}
+    &\equal{F_x}{-N_{1_x} + N_{3_x}} \\
+    &\equal{F_y}{N_{1_y} + B_y - N_{3_y}} \\
+\end{align}
 
 \newpage
 
 \subsection{Összegzés}
+\begin{align*}
+	N_1 &= &\begin{bmatrix}
+		0.92375 \\
+		0.2265
+	\end{bmatrix} \kn{}\\
+	N_2 &= &\begin{bmatrix}
+		-2.0775 \\
+		-2.0775
+	\end{bmatrix} \kn{}\\
+	N_3 &= &\begin{bmatrix}
+		0.92375 \\
+		2.0775
+	\end{bmatrix} \kn{}\\
+\end{align*}
