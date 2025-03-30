@@ -1,7 +1,10 @@
 \section{1-es rúd igénybevételei}
-\subsection{SZTÁ}
 
-\newpage
+\sztaone
+
+\newcommand{\ncolor}{orange}
+\newcommand{\vcolor}{green}
+\newcommand{\mcolor}{cyan}
 
 \subsection{Függvények}
 {\footnotesize
@@ -19,7 +22,7 @@
 
 			\toprule
 
-			\rowcolor{pink}
+			\rowcolor{\ncolor}
 			$N$
 			&$-A_x$
 			&$-A_x - N_{2_x} + F_1$
@@ -27,7 +30,7 @@
 
 			\midrule
 
-			\rowcolor{lime}
+			\rowcolor{\vcolor}
 			$V$
 			&$-A_y+px$
 			&$px -A_y + N_{2_y}$
@@ -35,7 +38,7 @@
 
 			\midrule
 
-			\rowcolor{cyan}
+			\rowcolor{\mcolor}
 			$M_h$
 			&$
 			-A_y x + p \frac{x^2}{2}
@@ -62,3 +65,109 @@
 \newpage
 
 \subsection{Ábrázolás}
+
+\pgfmathsetmacro\Ax{6}
+\pgfmathsetmacro\Ay{1.074}
+\pgfmathsetmacro\p{0.0045}
+\pgfmathsetmacro\Ntwox{-2.0775}
+\pgfmathsetmacro\Ntwoy{\Ntwox}
+\pgfmathsetmacro\Fone{3}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coords
+
+		\upperhorizontalsizes
+
+		\draw[opacity=.2] (A) -- +(0, -15);
+		\draw[opacity=.2] (G) -- +(0, -15);
+		\draw[opacity=.2] (\Ls + \Rs, 0) -- +(0, -15);
+		\draw[opacity=.2] (B) -- +(0, -15);
+
+		\sharedforces
+		\draw[line width=\forcewidth, \normalforcecolor, -Stealth] 
+			(\Ls, \Rs * 0.485) -- +(-\forcelength, 0)
+			node[midway, above] {$F_1$};
+		\beamone
+		\beamoneforces
+		\upperpoints
+
+		\begin{axis}[
+			at={(0, -1500)},
+			height={100},
+			width={272.5},
+			xlabel={$x$},
+			ylabel={$N(x) \kn{}$},
+			ymin=-8, ymax=0,
+			axis lines=left,
+		]
+			\addplot [
+				domain=0:\L,
+				\ncolor
+			]
+				{-\Ax};
+			\addplot [
+				domain=\L:\L+\R,
+				\ncolor
+			]
+				{-\Ax-\Ntwox};
+			\addplot [
+				domain=\L+\R:\L+\L+\R,
+				\ncolor
+			]
+				{-\Ax-\Ntwox+\Fone};
+		\end{axis}
+
+		\begin{axis}[
+			at={(0, -2500)},
+			height={100},
+			width={272.5},
+			xlabel={$x$},
+			ylabel={$V(x) \kn{}$},
+			ymin=-3, ymax=3,
+			axis lines=left,
+		]
+			\addplot [
+				domain=0:\L,
+				\vcolor
+			]
+				{-\Ay + \p *x};
+			\addplot [
+				domain=\L:\L+\R,
+				\vcolor
+			]
+				{-\Ay + \p*x + \Ntwoy};
+			\addplot [
+				domain=\L+\R:\L+\L+\R,
+				\vcolor
+			]
+				{-\Ay + \p*(\L+\R) + \Ntwoy};
+		\end{axis}
+
+		\begin{axis}[
+			at={(0, -4500)},
+			height={100},
+			width={272.5},
+			xlabel={$x$},
+			ylabel={$M_h(x) \knm{}$},
+			ymin=-300, ymax=400,
+			axis lines=left,
+		]
+			\addplot [
+				domain=0:\L,
+				\mcolor
+			]
+				{-\Ay *x + \p *(x^2/2)};
+			\addplot [
+				domain=\L:\L+\R,
+				\mcolor
+			]
+				{-\Ay *x + \p *(x^2/2) + \Ntwoy * (x - \L) + \Fone * (\R / 2)};
+			\addplot [
+				domain=\L+\R:2*\L+\R,
+				\mcolor
+			]
+				{-\Ay *x + \p *(\L+\R) *(x - (\L+\R)/2) + \Ntwoy * (x - \L) + \Fone * (\R / 2)};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}

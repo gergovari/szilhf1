@@ -1,0 +1,329 @@
+\pgfmathsetmacro\s{0.008}
+
+\pgfmathsetmacro\L{350}
+\pgfmathsetmacro\R{300}
+\pgfmathsetmacro\d{50}
+
+\pgfmathsetmacro\dones{5}
+\pgfmathsetmacro\ds{\d * .05}
+\pgfmathsetmacro\dthrees{4}
+
+\newcommand{\structurecolor}{lightgray}
+\newcommand{\coordcolor}{orange}
+\newcommand{\normalforcecolor}{blue}
+\newcommand{\sharedforcecolor}{red}
+\newcommand{\reactionforcecolor}{violet}
+\newcommand{\beamforcecolor}{olive}
+
+\newcommand{\coordsize}{4pt}
+\newcommand{\sizelength}{6}
+\newcommand{\sizewidth}{.1}
+\newcommand{\sizeyoffset}{-.5}
+\newcommand{\sizeylineoffset}{-.2}
+
+\newcommand{\forcewidth}{2}
+\newcommand{\forcelength}{1.5}
+
+\newcommand{\coords}{
+	\pgfmathsetmacro\Ls{\L * \s}
+	\pgfmathsetmacro\Rs{\R * \s}
+
+	\coordinate (A) at (0, 0);
+	\coordinate (B) at (2 * \Ls + \Rs, 0);
+	\coordinate (C) at (\Ls + \Rs, -\Rs);
+	\coordinate (D) at (\Ls + \Rs - 0.5 * \Ls, -1.5 * \Rs);
+	\coordinate (G) at (\Ls, 0);
+}
+
+\newcommand{\upperpoints}{
+	\fill[\coordcolor] (A) circle (\coordsize) node[above left] {$A$};
+	\fill[\coordcolor] (B) circle (\coordsize) node[below right] {$B$};
+	\fill[\coordcolor] (G) circle (\coordsize) node[below right] {$G$};
+}
+
+\newcommand{\midpoints}{
+	\fill[\coordcolor] (G) circle (\coordsize) node[below right] {$G$};
+	\fill[\coordcolor] (C) circle (\coordsize) node[below right] {$C$};
+}
+
+\newcommand{\lowerpoints}{
+	\fill[\coordcolor] (C) circle (\coordsize) node[below right] {$C$};
+	\fill[\coordcolor] (B) circle (\coordsize) node[below right] {$B$};
+	\fill[\coordcolor] (D) circle (\coordsize) node[below left] {$D$};
+}
+
+\newcommand{\points}{
+	\upperpoints
+	\midpoints
+	\lowerpoints
+}
+
+\newcommand{\beamone}{
+	\draw[line width=\dones, \structurecolor] (A) -- (B);
+	\draw[line width=\ds, \structurecolor] (G) -- +(0, \Rs * 0.5);
+}
+
+\newcommand{\beamtwo}{
+	\draw[line width=\ds, \structurecolor] (G) arc (0:90:-\Rs);
+}
+
+\newcommand{\beamthree}{
+	\draw[line width=\dthrees, \structurecolor] (B) -- (D);
+}
+
+\newcommand{\structure}{
+	\beamone
+	\beamthree
+	\beamtwo
+}
+
+\newcommand{\horizontalsizes}{
+	\upperhorizontalsizes
+
+	\draw[line width=\sizewidth] (C) -- +(0, -\sizelength * 0.35);
+	\draw[line width=\sizewidth] (D) -- +(0, -\sizelength * 0.15);
+	\draw[line width=\sizewidth] (\Ls + \Rs, 0) -- +(0, -\sizelength * 0.5);
+
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(D)+(0, -\sizelength * 0.1) -- +(\Ls * .5, -\sizelength * 0.1)
+		node[midway, below] {$\frac{L}{2}$};
+}
+
+\newcommand{\upperhorizontalsizes}{
+	\draw[line width=\sizewidth] (A) -- +(0, \sizelength * 0.5);
+	\draw[line width=\sizewidth] (G) -- +(0, \sizelength * 0.5);
+	\draw[line width=\sizewidth] (\Ls + \Rs, 0) -- +(0, \sizelength * 0.5);
+	\draw[line width=\sizewidth] (B) -- +(0, \sizelength * 0.5);
+	
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(0, \sizelength * 0.4) -- +(\Ls, 0)
+		node[midway, above] {$L$};
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(\Ls, \sizelength * 0.4) -- +(\Rs, 0)
+		node[midway, above] {$R$};
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(\Ls + \Rs, \sizelength * 0.4) -- +(\Ls, 0)
+		node[midway, above] {$L$};
+}
+
+\newcommand{\verticalsizes}{
+	\draw[line width=\sizewidth] (\sizeyoffset, \Rs * 0.5) -- +(-\sizelength * 0.1, 0);
+	\draw[line width=\sizewidth] (\sizeyoffset, 0) -- +(-\sizelength * 0.1, 0);
+	\draw[line width=\sizewidth] (\sizeyoffset, -\Rs) -- +(-\sizelength * 0.1, 0);
+	\draw[line width=\sizewidth] (\sizeyoffset, -\Rs -\Rs * 0.5) -- +(-\sizelength * 0.1, 0);
+
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(\sizeyoffset + \sizeylineoffset, \Rs * 0.5) -- +(0, -\Rs * 0.5)
+		node[midway, left] {$\frac{R}{2}$};
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(\sizeyoffset + \sizeylineoffset, 0) -- +(0, -\Rs)
+		node[midway, left] {$R$};
+	\draw[line width=\sizewidth, Stealth-Stealth, ]
+		(\sizeyoffset + \sizeylineoffset, -\Rs) -- +(0, -\Rs * 0.5)
+		node[midway, left] {$\frac{R}{2}$};
+}
+
+\newcommand{\sizes}{
+	\horizontalsizes
+	\verticalsizes
+}
+
+\newcommand{\normalforces}{
+	\draw[line width=\forcewidth, \normalforcecolor, -Stealth] 
+		(D) -- +(-\forcelength, 0)
+		node[midway, above] {$F_2$};
+	\draw[line width=\forcewidth, \normalforcecolor, -Stealth] 
+		(\Ls, \Rs * 0.485) -- +(-\forcelength, 0)
+		node[midway, above] {$F_1$};
+}
+
+\newcommand{\sharedforces}{
+	\fill[\sharedforcecolor, opacity=.4] (A) rectangle +(\Ls + \Rs, \Rs * 0.3);
+	\draw[line width=.2, \sharedforcecolor, -Stealth] 
+		(1, \Rs * 0.25) -- (1, .2)
+		node[midway, left] {$p$};
+}
+
+\newcommand{\reactionforces}{
+	\draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(0, -\forcelength) -- (A)
+		node[midway, right] {$A_y$};
+	\draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(-\forcelength, 0) -- (A)
+		node[near start, left, below] {$A_x$};
+
+	\draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(B) -- +(\forcelength, 0)
+		node[below right] {$B_x$};
+	\draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+		(2*\Ls + \Rs, -\forcelength) -- (B)
+		node[near start, right] {$B_y$};
+}
+
+\newcommand{\forces}{
+	\normalforces
+	\sharedforces
+	\reactionforces
+}
+
+\newcommand{\convention}{
+	\draw[-Stealth] 
+		(1.5 * \Ls + \Rs, 1.5 * \Rs) -- +(1, 0)
+		node [below] {$x$};
+	\draw[-Stealth] 
+		(1.5 * \Ls + \Rs, 1.5 * \Rs) -- +(0, 1)
+		node [left] {$y$};
+
+	\draw[-Stealth]
+		(2 * \Ls + \Rs, 1.75 * \Rs) arc (0:180:-.5)
+		node [midway, above] {$+$};
+}
+
+\newcommand{\szta}{
+	\begin{figure}[hbt!]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\convention
+			\sizes
+			\forces
+			\structure
+			\points
+		\end{tikzpicture}
+		\caption{SZTÁ}
+	\end{figure}
+}
+
+\newcommand{\beamoneforces}{
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(B) -- +(\forcelength, 0)
+		node[near end, below] {$N_{1_x}$};
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(2 * \Ls + \Rs, \forcelength) -- (B)
+		node[midway, right] {$N_{1_y}$};
+
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(G) -- +(\forcelength, 0)
+		node[near end, below] {$N_{2_x}$};
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(G) -- +(0, -\forcelength)
+		node[midway, right] {$N_{2_y}$};
+}
+
+\newcommand{\sztaone}{
+	\begin{figure}[hbt!]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\convention
+
+			\upperhorizontalsizes
+			\sharedforces
+		\draw[line width=\forcewidth, \normalforcecolor, -Stealth] 
+			(\Ls, \Rs * 0.485) -- +(-\forcelength, 0)
+			node[midway, above] {$F_1$};
+			\beamone
+			\beamoneforces
+			\upperpoints
+		\end{tikzpicture}
+		\caption{SZTÁ}
+	\end{figure}
+}
+
+\newcommand{\beamtwoforces}{
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(\forcelength + \Ls, 0)-- (G)
+		node[near start, below] {$N_{2_x}$};
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(G) -- +(0, \forcelength)
+		node[midway, right] {$N_{2_y}$};
+
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(C) -- +(\forcelength, 0)
+		node[near end, above] {$N_{2_x}$};
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(C) -- +(0, -\forcelength)
+		node[midway, left] {$N_{2_y}$};
+}
+
+\newcommand{\beamthreeforces}{
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(C) -- +(-\forcelength, 0)
+		node[left] {$N_{2_x}$};
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(C) -- +(0, \forcelength)
+		node[above] {$N_{2_y}$};
+
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(B) -- +(\forcelength, 0)
+		node[right] {$N_{3_x}$};
+	\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+		(B) -- +(0, \forcelength)
+		node[above] {$N_{3_y}$};
+}
+
+\newcommand{\sztatwo} {
+	\begin{figure}[hbt!]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\verticalsizes
+			\beamtwoforces
+			\beamtwo
+			\midpoints
+		\end{tikzpicture}
+		\caption{SZTÁ}
+	\end{figure}
+}
+
+\newcommand{\sztathree} {
+	\begin{figure}[hbt!]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\sizes
+			\beamthreeforces
+
+			\draw[line width=\forcewidth, \normalforcecolor, -Stealth] 
+				(D) -- +(-\forcelength, 0)
+				node[midway, above] {$F_2$};
+
+			\beamthree
+			\lowerpoints
+		\end{tikzpicture}
+		\caption{SZTÁ}
+	\end{figure}
+}
+
+\newcommand{\sztab} {
+	\begin{figure}[hbt!]
+		\centering
+		\begin{tikzpicture}
+			\coords
+			
+			\draw (0, 0) circle (.5) node {$B$};
+
+			\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+				(-.5, 0) -- +(-\forcelength, 0)
+				node[midway, above] {$N_{1_x}$};
+			\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+				(.5, 0) -- +(\forcelength, 0)
+				node[midway, above] {$N_{3_x}$};
+			\draw[line width=\forcewidth, \reactionforcecolor, -Stealth] 
+				(0, 0.5) -- +(0, \forcelength)
+				node[above] {$B_y$};
+			\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+				(.7, 0.5) -- +(0, \forcelength)
+				node[above] {$N_{1_y}$};
+			\draw[line width=\forcewidth, \beamforcecolor, -Stealth] 
+				(0, -0.5) -- +(0, -\forcelength)
+				node[right] {$N_{3_y}$};
+
+		\end{tikzpicture}
+		\caption{SZTÁ}
+	\end{figure}
+}
