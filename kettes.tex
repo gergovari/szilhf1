@@ -1,8 +1,6 @@
 \section{2-es rúd igénybevételei}
 
-\subsection{SZTÁ}
-
-\newpage
+\sztatwo
 
 \subsection{Függvények}
 
@@ -30,6 +28,31 @@
 \newpage
 
 \subsection{Normálfeszültség ábrázolása}
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines = middle,
+			xlabel={$y$},
+			ylabel={$\sigma\mpa{}$},
+			width=0.8 * \textwidth,
+		]
+			\addplot [
+				domain=-25:25,
+				red
+			]
+				{(-2837.92)/(1963.495308) + (228125.3329) / (\R*1963.495308) + (228125.3329)/(306796.1576) * (\R*x)/(\R+x)};
+
+			\addplot[only marks, mark=*] coordinates {(-25, -21.34)};
+			\node at (-25 + 3.5, -21.34 + 3) {-21.34};
+
+			\addplot[only marks, mark=*] coordinates {(0, -1.058)};
+			\node at (0 + 3.5, -1.058 - 1) {-1.058};
+
+			\addplot[only marks, mark=*] coordinates {(25, 16.1)};
+			\node at (25 - 3, 16.1 - 1) {16.1};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
 
 \subsection{Maximális normálfeszültség}
 
@@ -44,3 +67,8 @@
 	\sigma(0) &= \mpa{-1.058} \\
 	\sigma(-\frac{d}{2}) &= \mpa{-21.34}
 \end{align*}
+
+\begin{equation*}
+	\sigma^{(2)}_{\text{K,max}} = \sigma(-\frac{d}{2}) = \mpa{-21.34}
+\end{equation*}
+

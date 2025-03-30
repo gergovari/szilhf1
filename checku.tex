@@ -19,3 +19,62 @@
 \end{gather*}
 
 \subsection{Normálerő ábrázolása}
+
+\pgfmathsetmacro\b{24}
+\pgfmathsetmacro\N{6000}
+\pgfmathsetmacro\Mhmax{350000}
+\pgfmathsetmacro\Ix{44373.333}
+\pgfmathsetmacro\starty{-104.026}
+\pgfmathsetmacro\endy{85.27}
+\pgfmathsetmacro\zeroy{-9.375}
+
+%\pgfmathsetmacro\b{21}
+%\pgfmathsetmacro\N{4000}
+%\pgfmathsetmacro\Mhmax{233160}
+%\pgfmathsetmacro\Ix{26010.8333}
+%\pgfmathsetmacro\starty{-102.2848}
+%\pgfmathsetmacro\endy{85.9583}
+%\pgfmathsetmacro\zeroy{-8.16387}
+
+\pgfmathsetmacro\A{10/9 * \b^2}
+
+\rule{0pt}{150pt}
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			%xlabel={$y$},
+			rotate=-90,
+			x dir=reverse,
+			x tick label style = {
+				anchor=east,
+			},
+			y tick label style = {
+				anchor=north,
+			},
+			ylabel={$\sigma\mpa{}$},
+			axis lines=middle,
+		]
+			%\path[name path=axis] (axis cs:0,0) -- (axis cs:0,1);
+
+			\addplot [
+				name path=f,
+				domain=-\b/2:\b/2,
+				red,
+				fill=blue,
+				fill opacity=.5,
+			]
+				{-(\N/\A + \Mhmax/\Ix * x)};
+			%\addplot fill between [of=f and axis];
+
+			
+			\addplot[only marks, mark=*] coordinates {(\b/2, \starty)};
+			\node at (\b/2 - 1, \starty + 27) {-94.66};
+
+			\addplot[only marks, mark=*] coordinates {(-\b/2, \endy)};
+			\node at (\b/2 - 22, \endy - 23) {\endy};
+
+			\addplot[only marks, mark=*] coordinates {(0, \zeroy)};
+			\node at (0 - 1.5, \zeroy - 10) {\zeroy};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
